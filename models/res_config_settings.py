@@ -7,17 +7,11 @@ class ResConfigSettings(models.TransientModel):
     l10n_latam_use_documents = fields.Boolean(
         related='pos_invoice_journal_id.l10n_latam_use_documents'
     )
+
     pos_partner_id = fields.Many2one(
         comodel_name='res.partner',
         related='pos_config_id.pos_partner_id', 
         readonly=False,
         default=lambda self: self.env.ref('l10n_do_pos.default_pos_partner', raise_if_not_found=False),
     )
-    l10n_do_type_limit_order_history = fields.Selection(
-        related='pos_config_id.l10n_do_type_limit_order_history',
-        readonly=False
-    )
-    l10n_do_type_limit_order_history_days = fields.Integer(
-        related='pos_config_id.l10n_do_type_limit_order_history_days',
-        readonly=False
-    )
+    
