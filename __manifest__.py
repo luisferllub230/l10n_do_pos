@@ -9,12 +9,11 @@
     ],
     'data': [
         'data/data.xml',
+        'views/res_config_settings_view.xml',
     ],
-    # 'assets': {
-    #     'point_of_sale.assets': [
-    #         'l10n_do_pos/static/src/scss/*',
-    #         'l10n_do_pos/static/src/js/**/*.js',
-    #         'l10n_do_pos/static/src/xml/**/*.xml',
-    #     ],
-    # },
+    'assets': {
+        'point_of_sale._assets_pos': [
+            'l10n_do_pos/static/src/app/models/*.js',
+        ],
+    },
 }
