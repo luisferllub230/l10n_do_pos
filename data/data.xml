@@ -3,10 +3,7 @@
     <data noupdate="1">
         <record model="res.partner" id="default_pos_partner" forcecreate="0">
             <field name="name">Cliente de consumo</field>
-        </record>
-
-        <record model="pos.config" id="point_of_sale.pos_config_main">
-            <field name="pos_partner_id" ref="default_pos_partner"/>
+            <field name="l10n_do_dgii_tax_payer_type">non_payer</field>
         </record>
 
         <!-- <record model="pos.payment.method" id="credit_note">
