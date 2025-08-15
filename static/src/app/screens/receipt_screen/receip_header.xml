@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension">
+        <xpath expr="//div[@t-if='props.data.company.name']" position="replace">
+            <div>
+                [<t t-esc="props.data.company.vat"/>] <t t-esc="props.data.company.name"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//t[@t-if='props.data.company.vat']" position="replace"/>
+        
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="after">
+            <br/>
+            <div>--------------------------------</div>  
+            <t t-if="props.data.partner">
+                <div>
+                    Cliente: <t t-esc="props.data.partner.name"/>
+                </div>
+                <div t-if="props.data.partner.vat">
+                    RNC / Cedula: <t t-esc="receipt.partner.vat"/>
+                </div>
+            </t>
+            <div t-if="props.data.pos_latam_document_type_name">
+                NCF TIPO: <t t-esc="props.data.pos_latam_document_type_name"/>
+            </div>
+            <div t-if="props.data.pos_ncf">
+                NCF: <t t-esc="props.data.pos_ncf"/>
+            </div>
+            <div>--------------------------------</div>
+        </xpath>
+    </t>
+
+</templates>

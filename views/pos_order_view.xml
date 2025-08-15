@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="l10n_do_pos_view_pos_pos_form" model="ir.ui.view">
+        <field name="name">l10n.do.pos.view.pos.pos.form</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Fiscal data" invisible="pos_ncf == False" id="l10n_do_pos_page_fiscal_data">
+                    <group>
+                        <group>
+                            <field name="pos_ncf" readonly="1"/>
+                            <field name="pos_latam_document_type_id" readonly="1"/>
+                            <field name="pos_do_income_type" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
