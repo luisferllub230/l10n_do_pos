@@ -1,4 +1,9 @@
+import logging
+
 from odoo import api, fields, models, tools, _, Command
+from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 class PosOrder(models.Model):
     _inherit = 'pos.order'
@@ -51,3 +56,4 @@ class PosOrder(models.Model):
             move.with_context(is_l10n_do_seq=True)._set_next_sequence()
         
         return invoice
+    
