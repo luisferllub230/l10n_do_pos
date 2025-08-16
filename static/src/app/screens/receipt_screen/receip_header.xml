@@ -2,32 +2,33 @@
 <templates id="template" xml:space="preserve">
 
     <t t-name="OrderReceipt" t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension">
-        <xpath expr="//div[@t-if='props.data.company.name']" position="replace">
-            <div>
-                [<t t-esc="props.data.company.vat"/>] <t t-esc="props.data.company.name"/>
-            </div>
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="attributes">
+            <attribute name="style">font-size: 106%;</attribute>
         </xpath>
-
-        <xpath expr="//t[@t-if='props.data.company.vat']" position="replace"/>
         
-        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="after">
-            <br/>
-            <div>--------------------------------</div>  
+        <xpath expr="//div[@t-if='props.data.trackingNumber and !props.data.bigTrackingNumber']" position="replace"/>
+        
+        <xpath expr="//div[@t-if='props.data.cashier']" position="before">  
+            <h4 t-if="props.data.pos_latam_document_type_name">
+                Factura de <t t-esc="props.data.pos_latam_document_type_name"/>
+            </h4>
+            <h4 t-if="props.data.pos_ncf">
+                NCF: <t t-esc="props.data.pos_ncf"/>
+            </h4>
+            <div t-if="props.data.pos_reference">
+                <t t-esc="props.data.pos_reference"/>
+            </div>
+            <div t-if="props.data.pos_date">
+                <t t-esc="props.data.pos_date"/>
+            </div>
             <t t-if="props.data.partner">
                 <div>
                     Cliente: <t t-esc="props.data.partner.name"/>
                 </div>
                 <div t-if="props.data.partner.vat">
-                    RNC / Cedula: <t t-esc="receipt.partner.vat"/>
+                    RNC/CED: <t t-esc="receipt.partner.vat"/>
                 </div>
             </t>
-            <div t-if="props.data.pos_latam_document_type_name">
-                NCF TIPO: <t t-esc="props.data.pos_latam_document_type_name"/>
-            </div>
-            <div t-if="props.data.pos_ncf">
-                NCF: <t t-esc="props.data.pos_ncf"/>
-            </div>
-            <div>--------------------------------</div>
         </xpath>
     </t>
 
