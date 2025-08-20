@@ -16,6 +16,7 @@
         'point_of_sale._assets_pos': [
             'l10n_do_pos/static/src/app/models/*.js',
             'l10n_do_pos/static/src/app/screens/**/*.xml',
+            'l10n_do_pos/static/src/app/screens/**/*.js',
             'l10n_do_pos/static/src/app/store/*.js',
         ],
     },
